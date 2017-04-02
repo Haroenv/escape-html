@@ -1,21 +1,22 @@
 {
-  "name": "escape-html",
-  "description": "Escape string for use in HTML",
-  "version": "1.0.3",
+  "name": "escape-html-unicode",
+  "description": "Escape string to its unicode escape",
+  "version": "0.0.0",
   "license": "MIT",
   "keywords": [
     "escape",
-    "html",
-    "utility"
+    "react",
+    "utility",
+    "small"
   ],
   "repository": "component/escape-html",
   "devDependencies": {
-    "benchmark": "1.0.0",
+    "benchmark": "2.1.4",
     "beautify-benchmark": "0.2.4"
   },
   "files": [
     "LICENSE",
-    "Readme.md",
+    "README.md",
     "index.js"
   ],
   "scripts": {

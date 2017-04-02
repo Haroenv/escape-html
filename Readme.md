@@ -1,56 +1,50 @@
 
-# escape-html
+# escape-html-unicode
 
-  Escape string for use in HTML
+  Escape string for use in JavaScript or React
 
 This module exports a single function, `escapeHtml`, that is used to escape
 a string of content such that it can be interpolated in HTML content.
 
-This module will escape the following characters: `"`, `'`, `&`, `<`, and `>`.
-
-**Note** that the escaped value is only suitable for being interpolated into
-HTML as the text content of elements in which the tag does not have different
-escaping mechanisms (it cannot be placed inside `<style>` or `<script>`, for
-example, as those content bodies are not HTML, but CSS and JavaScript,
-respectively; these are known as "raw text elements" in the HTML standard).
-
-**Note** when using the escaped value within a tag, it is only suitable as
-the value of an attribute, where the value is quoted with either a double
-quote character (`"`) or a single quote character (`'`).
+This module will escape the following characters: `"`, `'`, `&`, `<`, and `>`
+to their unicode escape code. (\u0022, ...).
 
 ## Example
 
 ```js
-var escapeHtml = require('escape-html');
+var escapeHtml = require('escape-html-unicode');
 var html = escapeHtml('foo & bar');
-// -> foo &amp; bar
+// -> foo \u0026 bar
 ```
 
 ## Benchmark
 
 ```
-$ npm run-script bench
+$ yarn run bench
+yarn run v0.21.3
+$ node benchmark/index.js 
 
-> escape-html@1.0.3 bench nodejs-escape-html
-> node benchmark/index.js
+  http_parser@2.7.0
+  node@7.7.1
+  v8@5.5.372.41
+  uv@1.11.0
+  zlib@1.2.11
+  ares@1.10.1-DEV
+  modules@51
+  openssl@1.0.2k
+  icu@58.2
+  unicode@9.0
+  cldr@30.0.3
+  tz@2016j
 
 
-  http_parser@1.0
-  node@0.10.33
-  v8@3.14.5.9
-  ares@1.9.0-DEV
-  uv@0.10.29
-  zlib@1.2.3
-  modules@11
-  openssl@1.0.1j
-
-  1 test completed.
-  2 tests completed.
   3 tests completed.
 
-  no special characters    x 19,435,271 ops/sec ±0.85% (187 runs sampled)
-  single special character x  6,132,421 ops/sec ±0.67% (194 runs sampled)
-  many special characters  x  3,175,826 ops/sec ±0.65% (193 runs sampled)
+  no special characters    x 23,021,340 ops/sec ±2.07% (187 runs sampled)
+  single special character x  8,321,581 ops/sec ±0.78% (188 runs sampled)
+  many special characters  x  2,974,007 ops/sec ±0.81% (188 runs sampled)
+
+✨  Done in 33.35s.
 ```
 
 ## License

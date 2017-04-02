@@ -1,8 +1,9 @@
 /*!
- * escape-html
+ * escape-html-unicode
  * Copyright(c) 2012-2013 TJ Holowaychuk
  * Copyright(c) 2015 Andreas Lubbe
  * Copyright(c) 2015 Tiancheng "Timothy" Gu
+ * Copyright(c) 2017 Haroen Viaene
  * MIT Licensed
  */
 
@@ -46,19 +47,19 @@ function escapeHtml(string) {
   for (index = match.index; index < str.length; index++) {
     switch (str.charCodeAt(index)) {
       case 34: // "
-        escape = '&quot;';
+        escape = '\u0022';
         break;
       case 38: // &
-        escape = '&amp;';
+        escape = '\u0026';
         break;
       case 39: // '
-        escape = '&#39;';
+        escape = '\u0027';
         break;
       case 60: // <
-        escape = '&lt;';
+        escape = '\u003C';
         break;
       case 62: // >
-        escape = '&gt;';
+        escape = '\u003E';
         break;
       default:
         continue;
@@ -72,7 +73,5 @@ function escapeHtml(string) {
     html += escape;
   }
 
-  return lastIndex !== index
-    ? html + str.substring(lastIndex, index)
-    : html;
+  return lastIndex !== index ? html + str.substring(lastIndex, index) : html;
 }
